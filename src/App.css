@@ -1,38 +1,129 @@
-.App {
-  text-align: center;
-}
+@import url("https://fonts.googleapis.com/css2?family=Alkatra&display=swap");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to right, #a3a4a5, #dadbdb);
+  font-size: 1rem;
+  font-family: "Alkatra", cursive;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@media screen and (max-width: 550px) {
+  .header {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 }
+.header {
+  background-color: white;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 0.4rem;
+}
+.header input[type="submit"] {
+  padding: 0.45em 0.9em;
+  background-color: hsl(200, 100%, 50%);
+  color: white;
+  margin: 0.5rem 3rem;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  transition: background 350ms;
+}
+.header input[type="submit"]:hover {
+  background-color: hsl(200, 200%, 40%);
+}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form-group {
   display: flex;
   flex-direction: column;
+  margin: 0rem 1rem;
+  padding: 0.4rem 1em;
+}
+.form-group label {
+  color: #4e4e4e;
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+.form-group input {
+  padding: 0.2rem 0.5rem;
+  width: 150px;
+}
+.form-group select {
+  padding: 0.2rem 0.5rem;
+  width: 200px;
+}
+.form-group select option {
+  font-size: 1rem;
+}
+
+.container {
+  margin: 1rem 2rem;
+  display: grid;
+  max-width: 1200;
+}
+
+.flashCard-grid {
+  display: grid;
+  align-items: center;
+  align-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.75em;
+}
+
+.flashCard {
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+  height: 150px;
+  border-radius: 0.25rem;
+  margin: 0.5em;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
+  transform-style: preserve-3d;
+  background-color: white;
+  transition: 250ms;
+  transform: perspective(1000px) rotateY(var(--rotate-y, 0))
+    translateY(var(--translate-y, 0));
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.flashCard:hover {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+  --translate-y: -2px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.flashCard .front,
+.flashCard .back {
+  position: absolute;
+  backface-visibility: hidden;
+  padding: 1rem;
+}
+
+.flashCard .front {
+  left: 0;
+}
+
+.flashCard .back {
+  transform: rotateY(180deg);
+}
+
+.flashCard.goBackSide {
+  --rotate-y: 180deg;
+}
+
+.flashCard-options {
+  margin-top: 0.5em;
+}
+.flashCard-option {
+  margin-top: 0.5em;
+  color: #5a5a5a;
+  font-size: 0.9rem;
+}
+
+.center {
+  place-self: center;
 }
