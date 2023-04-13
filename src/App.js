@@ -15,9 +15,8 @@ function App() {
     fetch("https://opentdb.com/api_category.php")
       .then(res => res.json())
       .then(data => {
-        console.log(data)
         setCategories(data.trivia_categories)
-      })
+      }) 
   }, [])
 
 
@@ -33,6 +32,10 @@ function App() {
         setIsLoading(false);
         setIsDataLoaded(true);
         setQuestions(data);
+      })
+      .catch(err=>{
+        console.log(err.message);
+        setIsLoading(false);
       })
   }
 
